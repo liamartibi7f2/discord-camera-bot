@@ -30,13 +30,13 @@ client.on(Events.VoiceStateUpdate, (oldState, newState) => {
   const userId = newState.member?.id;
   if (!userId) return;
 
-  const targetChannelIds = process.env.TARGET_CHANNEL_ID ? process.env.TARGET_CHANNEL_ID.split(',').map(id => id.trim()) : [];
-const joinedChannelId = newState.channelId;
+  const targetChannelId = process.env.TARGET_CHANNEL_ID;
+  const joinedChannelId = newState.channelId;
 
-// Nếu cấu hình có phòng mục tiêu, chỉ xử lý nếu phòng user vào nằm trong danh sách đó
-if (targetChannelIds.length > 0 && !targetChannelIds.includes(joinedChannelId)) {
-  return;
-}
+  // If a specific channel is configured, only act on that channel
+  if (targetChannelId && joinedChannelId !== targetChannelId) {
+    return;
+  }
 
   // ── User JOINED a voice channel ──
   if (!oldState.channelId && joinedChannelId) {
