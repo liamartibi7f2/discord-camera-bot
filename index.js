@@ -1,4 +1,24 @@
 require('dotenv').config();
+
+// === DÁN ĐOẠN NÀY VÀO ĐÂY ===
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+app.get('/', (req, res) => res.send('Bot đang hoạt động!'));
+app.listen(port, () => console.log(`Web server đang chạy tại cổng ${port}`));
+// =============================
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.GuildMembers,
+  ],
+});
+
+const PENDING_TIMERS = new Map();
+const CAMERA_WATCHERS = new Map();
+require('dotenv').config();
 const { Client, GatewayIntentBits, Events } = require('discord.js');
 
 const client = new Client({
