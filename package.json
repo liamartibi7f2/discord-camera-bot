@@ -1,0 +1,13 @@
+{
+  "name": "discord-camera-bot",
+  "version": "1.0.0",
+  "description": "Discord bot that kicks members from voice channels if they don't turn on their camera within 30 seconds",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  }
+}
