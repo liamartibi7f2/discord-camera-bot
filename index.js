@@ -1,3 +1,10 @@
+  // Add near the top after require statements
+  const http = require('http');
+  const server = http.createServer((req, res) => {
+    res.writeHead(200);
+    res.end('OK');
+  });
+  server.listen(process.env.PORT || 10000);
 require('dotenv').config();
 const { Client, GatewayIntentBits, Events } = require('discord.js');
 
