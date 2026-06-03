@@ -1,0 +1,13 @@
+services:
+  - type: worker
+    name: discord-camera-bot
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: TARGET_CHANNEL_ID
+        sync: false
+      - key: ANNOUNCE_CHANNEL_ID
+        sync: false
