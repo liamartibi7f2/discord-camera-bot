@@ -1,6 +1,27 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits, Events } = require('discord.js');
 
+// === THÊM ĐOẠN NÀY ĐỂ RENDER GIỮ BOT ONLINE ===
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => res.send('Bot đang hoạt động!'));
+app.listen(port, () => console.log(`Web server đang chạy tại cổng ${port}`));
+// ==============================================
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.GuildMembers,
+  ],
+});
+
+// ... (giữ nguyên toàn bộ phần code PENDING_TIMERS, CAMERA_WATCHERS và logic bên dưới của bạn) ...
+require('dotenv').config();
+const { Client, GatewayIntentBits, Events } = require('discord.js');
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
